@@ -100,10 +100,10 @@ Ext.ux.form.HtmlEditor.MidasCommand = Ext.extend(Ext.util.Observable, {
                 if (b.value) { iconCls = iconCls+'-'+b.value.replace(/[<>\/]/g,''); }
                 midasCmdButton = {
                     iconCls: iconCls,
-                    handler: function(){
+                    handler: Ext.value(b.handler, function(){
                         this.cmp.relayCmd(b.cmd, b.value);
-                    },
-                    scope: this,
+                    }),
+                    scope: Ext.value(b.scope, this),
                     tooltip: b.tooltip ||
                     {
                         title: b.title
